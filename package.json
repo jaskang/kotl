@@ -1,0 +1,21 @@
+{
+  "name": "kotl",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@jaskang/config": "^1.0.0",
+    "eslint": "^8.38.0",
+    "prettier": "^2.8.7",
+    "typescript": "^5.0.4",
+    "vite": "^4.2.1",
+    "vitest": "^0.30.0"
+  }
+}

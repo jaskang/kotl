@@ -1,0 +1,12 @@
+# system files
+.DS_Store
+Thumbs.db
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Dependency directories
+node_modules/
+
+# build output
+dist/

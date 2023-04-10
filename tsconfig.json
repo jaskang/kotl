@@ -1,0 +1,6 @@
+{
+  "extends": "@jaskang/config/tsconfig",
+  "compilerOptions": {
+    "lib": ["es2017"]
+  }
+}
