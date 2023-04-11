@@ -1,7 +1,7 @@
 /**
  * 迭代一个回调函数n次
  *
- * @description 有点像forEach和reduce的结合，用于运行函数 n 次以生成值。
+ * 有点像forEach和reduce的结合，用于运行函数 n 次以生成值。
  * iterate 函数接受计数（运行回调的次数），回调函数和初始值。
  * 回调将作为reducer运行计数多次，然后返回累积值。
  *

@@ -3,7 +3,7 @@
   "compilerOptions": {
     "composite": true,
     "outDir": "dist",
-    "declarationDir": "temps",
+    "declarationDir": "temp",
     "tsBuildInfoFile": "node_modules/.cache/.tsbuildinfo",
     "lib": ["es2017"],
     "rootDir": "./src"

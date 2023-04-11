@@ -7,7 +7,11 @@ coverage/
 
 # Dependency directories
 node_modules/
-.chche/
+temp/
+
+# vitepress
+docs/.vitepress/cache
+docs/.vitepress/dist
 
 # build output
 dist/

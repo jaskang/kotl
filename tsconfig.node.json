@@ -5,5 +5,5 @@
     "lib": ["ESNext"],
     "types": ["node"]
   },
-  "include": ["./vite.config.ts", ".prettierrc.cjs"]
+  "include": ["./vite.config.ts", "./vite.docs.ts", ".prettierrc.cjs"]
 }
