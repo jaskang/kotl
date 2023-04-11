@@ -1,12 +1,12 @@
 import { toString } from './base'
 
+export const isUndefined = (val: any): val is undefined => toString(val) === '[object Undefined]'
+export const isNull = (val: any): val is null => toString(val) === '[object Null]'
 export const isSymbol = (val: any): val is symbol => typeof val === 'symbol'
 export const isString = (val: any): val is string => typeof val === 'string'
 export const isBoolean = (val: any): val is boolean => typeof val === 'boolean'
-export const isNumber = (val: any): val is number => typeof val === 'number'
 export const isBigInt = (val: any): val is bigint => typeof val === 'bigint'
-export const isUndefined = (val: any): val is undefined => toString(val) === '[object Undefined]'
-export const isNull = (val: any): val is null => toString(val) === '[object Null]'
+export const isNumber = (val: any): val is number => typeof val === 'number' && !isNaN(val)
 
 export const isInt = (val: any): val is number => isNumber(val) && val % 1 === 0
 export const isFloat = (val: any): val is number => isNumber(val) && val % 1 !== 0
@@ -37,7 +37,7 @@ export const isPrimitive = (value: any): boolean =>
   (typeof value !== 'object' && typeof value !== 'function')
 
 export const isEmpty = (value: any) => {
-  if (value === true || value === false) return true
+  if (value === true || value === false) return false
   if (value === null || value === undefined) return true
   if (isNumber(value)) return value === 0
   if (isDate(value)) return isNaN(value.getTime())

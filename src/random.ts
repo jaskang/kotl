@@ -47,7 +47,7 @@ export const uid = (length: number, specials: string = '') => {
   return iterate(
     length,
     acc => {
-      return acc + characters.charAt(random(0, characters.length))
+      return acc + characters.charAt(random(0, characters.length - 1))
     },
     ''
   )

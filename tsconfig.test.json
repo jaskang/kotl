@@ -1,0 +1,10 @@
+{
+  "extends": "@jaskang/config/tsconfig.node",
+  "compilerOptions": {
+    "composite": true,
+    "target": "ESNext",
+    "lib": ["ESNext"],
+    "types": ["node"]
+  },
+  "include": ["tests/**/*"]
+}
