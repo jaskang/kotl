@@ -1,6 +1,3 @@
 {
-  "extends": "@jaskang/config/tsconfig",
-  "compilerOptions": {
-    "lib": ["es2017"]
-  }
+  "references": [{ "path": "./tsconfig.lib.json" }, { "path": "./tsconfig.node.json" }]
 }

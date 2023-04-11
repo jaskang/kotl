@@ -1,0 +1,12 @@
+{
+  "extends": "@jaskang/config/tsconfig",
+  "compilerOptions": {
+    "composite": true,
+    "outDir": "dist",
+    "declarationDir": "temps",
+    "tsBuildInfoFile": "node_modules/.cache/.tsbuildinfo",
+    "lib": ["es2017"],
+    "rootDir": "./src"
+  },
+  "include": ["src/**/*"]
+}

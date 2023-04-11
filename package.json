@@ -3,17 +3,39 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "index.js",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/kotl.cjs",
+  "module": "./dist/kotl.js",
+  "types": "./dist/kotl.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/kotl.cjs",
+      "import": "./dist/kotl.js"
+    }
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "pnpm build:src && pnpm build:type && pnpm build:dst && pnpm clean",
+    "build:src": "vite build",
+    "build:type": "tsc --declaration --emitDeclarationOnly --project tsconfig.lib.json",
+    "build:dst": "api-extractor run",
+    "clean": "rimraf temps",
+    "test": "vitest",
+    "release": "pnpm build && changeset publish"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@changesets/cli": "^2.26.1",
     "@jaskang/config": "^1.0.0",
+    "@microsoft/api-extractor": "^7.34.4",
+    "@types/node": "^18.15.11",
     "eslint": "^8.38.0",
     "prettier": "^2.8.7",
+    "rimraf": "^5.0.0",
     "typescript": "^5.0.4",
     "vite": "^4.2.1",
     "vitest": "^0.30.0"

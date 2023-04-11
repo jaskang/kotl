@@ -7,6 +7,7 @@ coverage/
 
 # Dependency directories
 node_modules/
+.chche/
 
 # build output
 dist/

@@ -1,0 +1,9 @@
+{
+  "extends": "@jaskang/config/tsconfig.node",
+  "compilerOptions": {
+    "composite": true,
+    "lib": ["ESNext"],
+    "types": ["node"]
+  },
+  "include": ["./vite.config.ts", ".prettierrc.cjs"]
+}
