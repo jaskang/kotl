@@ -21,6 +21,7 @@
     "build:src": "vite build",
     "build:type": "tsc --declaration --emitDeclarationOnly --project tsconfig.lib.json",
     "build:dst": "api-extractor run",
+    "change": "pnpm changeset",
     "clean": "rimraf temps",
     "test": "vitest",
     "release": "pnpm build && changeset publish"
