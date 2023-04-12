@@ -2,126 +2,158 @@ import { toString } from './base'
 
 /**
  * 判断 val 是否是 undefined
- *
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export const isUndefined = (val: any): val is undefined => toString(val) === '[object Undefined]'
+export function isUndefined(val: any): val is undefined {
+  return toString(val) === '[object Undefined]'
+}
 
 /**
  * 判断 val 是否是 null
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export const isNull = (val: any): val is null => toString(val) === '[object Null]'
+export function isNull(val: any): val is null {
+  return toString(val) === '[object Null]'
+}
 
 /**
  * 判断 val 是否是 symbol
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export const isSymbol = (val: any): val is symbol => typeof val === 'symbol'
+export function isSymbol(val: any): val is symbol {
+  return typeof val === 'symbol'
+}
 
 /**
  * 判断 val 是否是字符串类型
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export const isString = (val: any): val is string => typeof val === 'string'
+export function isString(val: any): val is string {
+  return typeof val === 'string'
+}
 
 /**
  * 判断 val 是否是布尔类型
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export const isBoolean = (val: any): val is boolean => typeof val === 'boolean'
+export function isBoolean(val: any): val is boolean {
+  return typeof val === 'boolean'
+}
 
 /**
  * 判断 val 是否是 BigInt 类型
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export const isBigInt = (val: any): val is bigint => typeof val === 'bigint'
+export function isBigInt(val: any): val is bigint {
+  return typeof val === 'bigint'
+}
 
 /**
  * 判断 val 是否是数字类型 (非 NaN)
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export const isNumber = (val: any): val is number => typeof val === 'number' && !isNaN(val)
+export function isNumber(val: any): val is number {
+  return typeof val === 'number' && !isNaN(val)
+}
 
 /**
  * 判断 val 是否是整数 (非 NaN)
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export const isInt = (val: any): val is number => isNumber(val) && val % 1 === 0
+export function isInt(val: any): val is number {
+  return isNumber(val) && val % 1 === 0
+}
 
 /**
  * 判断 val 是否是浮点数 (非 NaN)
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export const isFloat = (val: any): val is number => isNumber(val) && val % 1 !== 0
+export function isFloat(val: any): val is number {
+  return isNumber(val) && val % 1 !== 0
+}
 
 /**
  * 判断 val 是否是数组类型
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export const isArray = (val: any): val is unknown[] => Array.isArray(val)
+export function isArray(val: any): val is unknown {
+  return Array.isArray(val)
+}
 
 /**
  * 判断 val 是否是对象类型，但不包括 null。
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export const isObject = (val: any): val is object => !!val && val.constructor === Object
+export function isObject(val: any): val is object {
+  return !!val && val.constructor === Object
+}
 
 /**
  * 判断 val 是否是函数类型
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export const isFunction = <T extends Function>(val: any): val is T => typeof val === 'function'
+export function isFunction<T extends Function>(val: any): val is T {
+  return typeof val === 'function'
+}
 
 /**
  * 判断 val 是否是 RegExp 类型
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export const isRegExp = (val: any): val is RegExp => toString(val) === '[object RegExp]'
+export function isRegExp(val: any): val is RegExp {
+  return toString(val) === '[object RegExp]'
+}
 
 /**
  * 判断 val 是否是 Date 类型
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export const isDate = (val: any): val is Date => toString(val) === '[object Date]'
+export function isDate(val: any): val is Date {
+  return toString(val) === '[object Date]'
+}
 
 /**
  * 判断是否在浏览器环境下运行
  * @returns {boolean} 判断结果
  */
-// @ts-ignore
-export const isBrowser = typeof window !== 'undefined'
+export function isBrowser() {
+  // @ts-ignore
+  return window !== 'undefined'
+}
 
 /**
  * 判断一个值是否为原始类型（undefined、null、number、string、boolean、symbol、bitint）。
  * @param value 要检查的值
  * @returns {boolean} 检查结果
  */
-export const isPrimitive = (value: any): boolean =>
-  value === undefined ||
-  value === null ||
-  (typeof value !== 'object' && typeof value !== 'function')
+export function isPrimitive(value: any): boolean {
+  return (
+    value === undefined ||
+    value === null ||
+    (typeof value !== 'object' && typeof value !== 'function')
+  )
+}
 
 /**
  * 判断一个值是否为空（没有属性或长度为 0）。
  * @param value 要检查的值
  * @returns {boolean} 检查结果
  */
-export const isEmpty = (value: any) => {
+export function isEmpty(value: any) {
   if (value === true || value === false) return false
   if (value === null || value === undefined) return true
   if (isNumber(value)) return value === 0
@@ -142,7 +174,7 @@ export const isEmpty = (value: any) => {
  * @param y 要比较的第二个值
  * @returns {boolean} 判断结果
  */
-export const isEqual = <TType>(x: TType, y: TType): boolean => {
+export function isEqual<TType>(x: TType, y: TType): boolean {
   if (Object.is(x, y)) return true
   if (x instanceof Date && y instanceof Date) {
     return x.getTime() === y.getTime()
