@@ -10,11 +10,7 @@
  * @param initValue - 初始值
  * @returns
  */
-export const iterate = <T>(
-  count: number,
-  func: (currentValue: T, iteration: number) => T,
-  initValue: T
-) => {
+function iterate<T>(count: number, func: (currentValue: T, iteration: number) => T, initValue: T) {
   let value = initValue
   for (let i = 1; i <= count; i++) {
     value = func(value, i)

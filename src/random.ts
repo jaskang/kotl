@@ -6,7 +6,7 @@ import { iterate } from './array'
  * @param max 最大值 (包含)
  * @returns 随机数
  */
-export const random = (min: number, max: number) => {
+export function random(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
@@ -15,7 +15,7 @@ export const random = (min: number, max: number) => {
  * @param array 数组
  * @returns 随机抽取的元素
  */
-export const draw = <T>(array: readonly T[]): T | null => {
+export function draw<T>(array: readonly T[]): T | null {
   const max = array.length
   if (max === 0) {
     return null
@@ -29,7 +29,7 @@ export const draw = <T>(array: readonly T[]): T | null => {
  * @param array 数组
  * @returns 随机打乱的数组 (新数组)
  */
-export const shuffle = <T>(array: readonly T[]): T[] => {
+export function shuffle<T>(array: readonly T[]): T[] {
   return array
     .map(a => ({ rand: Math.random(), value: a }))
     .sort((a, b) => a.rand - b.rand)
@@ -42,7 +42,7 @@ export const shuffle = <T>(array: readonly T[]): T[] => {
  * @param specials 特殊字符
  * @returns 唯一标识符
  */
-export const uid = (length: number, specials: string = '') => {
+export function uid(length: number, specials: string = '') {
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789' + specials
   return iterate(
     length,
