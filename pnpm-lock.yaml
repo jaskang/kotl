@@ -8,6 +8,7 @@ specifiers:
   '@microsoft/api-extractor': ^7.34.4
   '@types/node': ^18.15.11
   autoprefixer: ^10.4.14
+  body-scroll-lock: 4.0.0-beta.0
   eslint: ^8.38.0
   postcss: ^8.4.21
   prettier: ^2.8.7
@@ -27,6 +28,7 @@ devDependencies:
   '@microsoft/api-extractor': 7.34.4_@types+node@18.15.11
   '@types/node': 18.15.11
   autoprefixer: 10.4.14_postcss@8.4.21
+  body-scroll-lock: 4.0.0-beta.0
   eslint: 8.38.0
   postcss: 8.4.21
   prettier: 2.8.7

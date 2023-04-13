@@ -1,11 +1,6 @@
-// https://vitepress.dev/guide/custom-theme
-import './style.css'
-import { h } from 'vue'
-import Layout from './Layout.vue'
+import './styles/index.css'
+import VPApp from './components/VPApp.vue'
+import { type Theme } from 'vitepress'
+import { withConfigProvider } from './composables/config'
 
-export default {
-  Layout,
-  enhanceApp({ app, router, siteData }) {
-    // ...
-  },
-}
+export default { Layout: withConfigProvider(VPApp) } satisfies Theme
