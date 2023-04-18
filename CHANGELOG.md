@@ -1,5 +1,11 @@
 # kotl
 
+## 1.2.0
+
+### Minor Changes
+
+- [`ca9f883`](https://github.com/JasKang/kotl/commit/ca9f883e4d69c6c9eac17ef797231be2ec63c69c) Thanks [@JasKang](https://github.com/JasKang)! - 新增 isPromise
+
 ## 1.1.0
 
 ### Minor Changes
