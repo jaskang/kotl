@@ -86,7 +86,7 @@ export function isFloat(val: any): val is number {
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export function isArray(val: any): val is unknown {
+export function isArray(val: any): val is unknown[] {
   return Array.isArray(val)
 }
 
@@ -95,8 +95,8 @@ export function isArray(val: any): val is unknown {
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export function isObject(val: any): val is object {
-  return !!val && val.constructor === Object
+export function isObject(val: any): val is Record<any, any> {
+  return val !== null && typeof val === 'object'
 }
 
 /**
@@ -106,6 +106,15 @@ export function isObject(val: any): val is object {
  */
 export function isFunction<T extends Function>(val: any): val is T {
   return typeof val === 'function'
+}
+
+/**
+ * 判断 val 是否是 Promise 类型
+ * @param val 要判断的值
+ * @returns {boolean} 判断结果
+ */
+export function isPromise<T = any>(val: unknown): val is Promise<T> {
+  return isObject(val) && isFunction(val.then) && isFunction(val.catch)
 }
 
 /**

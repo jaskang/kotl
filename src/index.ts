@@ -1,3 +1,5 @@
-export * from './is'
+export * from './base'
 export * from './array'
+export * from './is'
 export * from './random'
+export * from './types'
