@@ -127,7 +127,9 @@ describe('数据类型判断函数测试', () => {
     expect(
       isEqual(
         () => {},
-        () => {}
+        () => {
+          console.log()
+        }
       )
     ).toBe(false)
     expect(isEqual({ a: { b: 2 } }, { a: { b: 2 } })).toBe(true)

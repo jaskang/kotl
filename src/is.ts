@@ -1,4 +1,4 @@
-import { toString } from './base'
+import { toRawType, toString } from './base'
 
 /**
  * 判断 val 是否是 undefined
@@ -6,7 +6,7 @@ import { toString } from './base'
  * @returns {boolean} 判断结果
  */
 export function isUndefined(val: any): val is undefined {
-  return toString(val) === '[object Undefined]'
+  return typeof val === 'undefined'
 }
 
 /**
@@ -91,7 +91,7 @@ export function isArray(val: any): val is unknown[] {
 }
 
 /**
- * 判断 val 是否是对象类型，但不包括 null。
+ * 判断 val 是否是对象类型，不包括 null。
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
@@ -122,27 +122,29 @@ export function isPromise<T = any>(val: unknown): val is Promise<T> {
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export function isRegExp(val: any): val is RegExp {
-  return toString(val) === '[object RegExp]'
-}
+export const isRegExp = (val: any): val is RegExp => toString(val) === '[object RegExp]'
 
 /**
  * 判断 val 是否是 Date 类型
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export function isDate(val: any): val is Date {
-  return toString(val) === '[object Date]'
-}
+export const isDate = (val: any): val is Date => toString(val) === '[object Date]'
+
+/**
+ * 判断 val 是否是指定类型
+ * @param val 要判断的值
+ * @param type 要判断的类型
+ * @returns {boolean} 判断结果
+ */
+export const isRawType = <T = any>(val: any, type: string): val is T => toRawType(val) === type
 
 /**
  * 判断是否在浏览器环境下运行
  * @returns {boolean} 判断结果
  */
-export function isBrowser() {
-  // @ts-ignore
-  return window !== 'undefined'
-}
+// @ts-ignore
+export const isBrowser = () => window !== 'undefined'
 
 /**
  * 判断一个值是否为原始类型（undefined、null、number、string、boolean、symbol、bitint）。
@@ -183,23 +185,28 @@ export function isEmpty(value: any) {
  * @param y 要比较的第二个值
  * @returns {boolean} 判断结果
  */
-export function isEqual<TType>(x: TType, y: TType): boolean {
-  if (Object.is(x, y)) return true
-  if (x instanceof Date && y instanceof Date) {
-    return x.getTime() === y.getTime()
+export function isEqual(val1: any, val2: any): boolean {
+  if (val1 === val2) return true
+
+  const type = toRawType(val1)
+  const type2 = toRawType(val2)
+
+  if (type !== type2) return false
+
+  if (typeof val1 !== 'object') {
+    return val1 === val2
+  } else if (type === 'Date') {
+    return val1.getTime() === val2.getTime()
+  } else if (type === 'RegExp') {
+    return val1.toString() === val2.toString()
+  } else if (type === 'Array') {
+    if (val1.length !== val2.length) return false
+    return val1.every((item: any, i: number) => isEqual(item, val2[i]))
+  } else {
+    const keyArr = Object.keys(val1)
+    if (keyArr.length !== Object.keys(val2).length) return false
+    return keyArr.every((key: string) => {
+      return isEqual(val1[key], val2[key])
+    })
   }
-  if (x instanceof RegExp && y instanceof RegExp) {
-    return x.toString() === y.toString()
-  }
-  if (typeof x !== 'object' || x === null || typeof y !== 'object' || y === null) {
-    return false
-  }
-  const keysX = Reflect.ownKeys(x as unknown as object) as (keyof typeof x)[]
-  const keysY = Reflect.ownKeys(y as unknown as object)
-  if (keysX.length !== keysY.length) return false
-  for (let i = 0; i < keysX.length; i++) {
-    if (!Reflect.has(y as unknown as object, keysX[i])) return false
-    if (!isEqual(x[keysX[i]], y[keysX[i]])) return false
-  }
-  return true
 }

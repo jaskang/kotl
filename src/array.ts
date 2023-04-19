@@ -1,4 +1,19 @@
 /**
+ * 从数组中移除一个元素
+ * @param array - 要移除元素的数组
+ * @param value - 要移除的元素
+ * @returns {boolean} 移除是否成功
+ */
+export function remove<T>(array: T[], value: T) {
+  const index = array.indexOf(value)
+  if (index >= 0) {
+    array.splice(index, 1)
+    return true
+  }
+  return false
+}
+
+/**
  * 迭代一个回调函数n次
  *
  * 有点像forEach和reduce的结合，用于运行函数 n 次以生成值。
