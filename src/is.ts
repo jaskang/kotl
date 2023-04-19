@@ -132,14 +132,6 @@ export const isRegExp = (val: any): val is RegExp => toString(val) === '[object 
 export const isDate = (val: any): val is Date => toString(val) === '[object Date]'
 
 /**
- * 判断 val 是否是指定类型
- * @param val 要判断的值
- * @param type 要判断的类型
- * @returns {boolean} 判断结果
- */
-export const isRawType = <T = any>(val: any, type: string): val is T => toRawType(val) === type
-
-/**
  * 判断是否在浏览器环境下运行
  * @returns {boolean} 判断结果
  */

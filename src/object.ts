@@ -1,5 +1,5 @@
-import { toRawType, toString } from './base'
-import { isArray, isDate, isFunction, isPrimitive, isRawType, isRegExp } from './is'
+import { toRawType } from './base'
+import { isArray, isFunction, isPrimitive } from './is'
 import { toInt } from './number'
 
 /**
