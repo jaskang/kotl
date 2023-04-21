@@ -94,17 +94,9 @@ export function clone(val: any) {
     return tmp
   } else {
     const tmp: any = {} // null
-    for (const k in val) {
-      if (k === '__proto__') {
-        Object.defineProperty(tmp, k, {
-          value: clone(val[k]),
-          configurable: true,
-          enumerable: true,
-          writable: true,
-        })
-      } else {
-        tmp[k] = clone(val[k])
-      }
+    const keys = Object.keys(val)
+    for (const k of keys) {
+      tmp[k] = clone(val[k])
     }
     return tmp
   }
