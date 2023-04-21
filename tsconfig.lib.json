@@ -3,9 +3,10 @@
   "compilerOptions": {
     "composite": true,
     "outDir": "dist",
+    "target": "ES2018",
     "declarationDir": "temp",
     "tsBuildInfoFile": "node_modules/.cache/.tsbuildinfo",
-    "lib": ["es2017"],
+    "lib": ["ESNext"],
     "rootDir": "./src"
   },
   "include": ["src/**/*"]

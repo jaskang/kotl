@@ -2,53 +2,44 @@
   "name": "kotl",
   "version": "1.2.0",
   "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
   "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    }
+  },
   "files": [
     "dist"
   ],
-  "main": "./dist/kotl.cjs",
-  "module": "./dist/kotl.js",
-  "types": "./dist/kotl.d.ts",
-  "exports": {
-    ".": {
-      "require": "./dist/kotl.cjs",
-      "import": "./dist/kotl.js"
-    }
-  },
   "scripts": {
-    "dev": "vite",
-    "build": "pnpm build:src && pnpm build:type && pnpm build:dst",
-    "build:src": "vite build",
-    "build:type": "tsc --declaration --emitDeclarationOnly --project tsconfig.lib.json",
-    "build:dst": "api-extractor run",
+    "build": "tsup",
     "change": "pnpm changeset",
-    "clean": "rimraf temp",
-    "md": "api-documenter markdown -i temp -o temp/mackdown",
     "test": "vitest",
     "release": "pnpm build && changeset publish",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.8",
     "@changesets/cli": "^2.26.1",
     "@jaskang/config": "^1.0.0",
-    "@microsoft/api-documenter": "^7.21.7",
-    "@microsoft/api-extractor": "^7.34.4",
     "@types/node": "^18.15.11",
     "autoprefixer": "^10.4.14",
     "body-scroll-lock": "4.0.0-beta.0",
     "eslint": "^8.38.0",
     "postcss": "^8.4.21",
     "prettier": "^2.8.7",
-    "rimraf": "^5.0.0",
     "tailwindcss": "^3.3.1",
+    "tsup": "^6.7.0",
     "typescript": "^5.0.4",
-    "vite": "^4.2.1",
     "vitepress": "1.0.0-alpha.65",
     "vitest": "^0.30.0",
     "vue": "^3.2.47"
