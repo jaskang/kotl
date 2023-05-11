@@ -17,4 +17,6 @@ export function toRawType(
 /**
  * 一个空函数
  */
-export const NOOP = () => {}
+export const NOOP = () => {
+  //
+}
