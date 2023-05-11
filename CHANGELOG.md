@@ -1,5 +1,11 @@
 # kotl
 
+## 1.2.1
+
+### Patch Changes
+
+- [`cc9ae95`](https://github.com/JasKang/kotl/commit/cc9ae953a42064266ea66ff64033bb586563dc61) Thanks [@JasKang](https://github.com/JasKang)! - fix: nothing
+
 ## 1.2.0
 
 ### Minor Changes
