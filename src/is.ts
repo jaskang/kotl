@@ -136,7 +136,7 @@ export const isDate = (val: any): val is Date => toString(val) === '[object Date
  * @returns {boolean} 判断结果
  */
 // @ts-ignore
-export const isBrowser = () => window !== 'undefined'
+export const isBrowser = () => typeof window !== 'undefined'
 
 /**
  * 判断一个值是否为原始类型（undefined、null、number、string、boolean、symbol、bitint）。
