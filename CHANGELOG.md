@@ -1,5 +1,11 @@
 # kotl
 
+## 1.2.2
+
+### Patch Changes
+
+- [`2cab030`](https://github.com/JasKang/kotl/commit/2cab0305d8f0f034bd239a292edcc76842c59543) Thanks [@JasKang](https://github.com/JasKang)! - fix: isBrowser
+
 ## 1.2.1
 
 ### Patch Changes
