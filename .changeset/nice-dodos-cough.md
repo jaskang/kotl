@@ -1,0 +1,5 @@
+---
+'kotl': minor
+---
+
+isNode isBrowser
