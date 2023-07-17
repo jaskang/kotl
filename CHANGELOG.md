@@ -1,5 +1,11 @@
 # kotl
 
+## 1.3.0
+
+### Minor Changes
+
+- [`1b42bb1`](https://github.com/JasKang/kotl/commit/1b42bb1efb81b425c838d2ef9dd0b57d27e955f4) Thanks [@JasKang](https://github.com/JasKang)! - isNode isBrowser
+
 ## 1.2.2
 
 ### Patch Changes
