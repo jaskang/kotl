@@ -1,7 +1,0 @@
-{
-  "extends": "@jaskang/config/tsconfig.web",
-  "compilerOptions": {
-    "composite": true
-  },
-  "include": ["docs/.vitepress/**/*.ts", "docs/.vitepress/**/*.tsx", "docs/.vitepress/**/*.vue"]
-}

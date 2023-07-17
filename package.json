@@ -6,20 +6,21 @@
   "author": "",
   "license": "MIT",
   "type": "module",
-  "main": "./dist/kotl.cjs",
-  "module": "./dist/kotl.js",
-  "types": "./dist/kotl.d.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/kotl.cjs",
-      "import": "./dist/kotl.js"
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     }
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "vite build && pnpm build:type && pnpm build:dts",
+    "build": "tsup",
     "build:type": "tsc --declaration --emitDeclarationOnly --project tsconfig.lib.json",
     "build:dts": "api-extractor run",
     "change": "pnpm changeset",
@@ -31,23 +32,21 @@
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.8",
-    "@changesets/cli": "^2.26.1",
-    "@jaskang/config": "^1.0.0",
-    "@microsoft/api-documenter": "^7.21.7",
-    "@microsoft/api-extractor": "^7.34.4",
-    "@types/node": "^18.15.11",
+    "@changesets/cli": "^2.26.2",
+    "@jaskang/config": "^1.3.0",
+    "@types/node": "^20.4.2",
     "autoprefixer": "^10.4.14",
     "body-scroll-lock": "4.0.0-beta.0",
-    "eslint": "^8.38.0",
-    "postcss": "^8.4.21",
+    "eslint": "^8.45.0",
+    "postcss": "^8.4.26",
     "prettier": "^2.8.7",
-    "tailwindcss": "^3.3.1",
-    "tsup": "^6.7.0",
-    "typescript": "^5.0.4",
-    "vite": "^4.3.1",
-    "vitepress": "1.0.0-alpha.65",
-    "vitest": "^0.30.0",
-    "vue": "^3.2.47"
+    "tailwindcss": "^3.3.3",
+    "tsup": "^7.1.0",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.4",
+    "vitepress": "1.0.0-beta.5",
+    "vitest": "^0.33.0",
+    "vue": "^3.3.4"
   },
   "pnpm": {
     "peerDependencyRules": {

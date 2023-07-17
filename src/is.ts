@@ -132,13 +132,6 @@ export const isRegExp = (val: any): val is RegExp => toString(val) === '[object 
 export const isDate = (val: any): val is Date => toString(val) === '[object Date]'
 
 /**
- * 判断是否在浏览器环境下运行
- * @returns {boolean} 判断结果
- */
-// @ts-ignore
-export const isBrowser = () => typeof window !== 'undefined'
-
-/**
  * 判断一个值是否为原始类型（undefined、null、number、string、boolean、symbol、bitint）。
  * @param value 要检查的值
  * @returns {boolean} 检查结果

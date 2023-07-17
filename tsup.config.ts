@@ -5,10 +5,10 @@ export default defineConfig(options => {
     entry: ['src/index.ts'],
     format: ['esm', 'cjs'],
     target: 'es2018',
-    splitting: false,
+    splitting: false, 
     sourcemap: true,
     clean: true,
     minify: false,
-    dts: true,
+    dts: { entry: 'src/index.ts' },
   }
 })
