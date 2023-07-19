@@ -1,4 +1,20 @@
-import { toRawType, toString } from './base'
+import { rawType, toString } from './base'
+import type { Func } from './types'
+
+/**
+ * 判断 val 是否是空值 (null 或 undefined)
+ * @param val 要判断的值
+ * @returns {boolean} 判断结果
+ *
+ * @example
+ * isNil(null) // => true
+ * isNil(undefined) // => true
+ * isNil(0) // => false
+ * isNil(false) // => false
+ */
+export function isNil<T>(data: T): data is Extract<T, null | undefined> {
+  return data == null
+}
 
 /**
  * 判断 val 是否是 undefined
@@ -33,7 +49,7 @@ export function isSymbol(val: any): val is symbol {
  * @returns {boolean} 判断结果
  */
 export function isString(val: any): val is string {
-  return typeof val === 'string'
+  return typeof val === 'string' || val instanceof String
 }
 
 /**
@@ -104,7 +120,7 @@ export function isObject(val: any): val is Record<any, any> {
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export function isFunction<T extends Function>(val: any): val is T {
+export function isFunction<T extends Func = Func>(val: any): val is T {
   return typeof val === 'function'
 }
 
@@ -145,23 +161,29 @@ export function isPrimitive(value: any): boolean {
 }
 
 /**
- * 判断一个值是否为空（没有属性或长度为 0）。
+ * 判断一个值是否为空（空字符串、空数组、空对象、空 Set/Map、null、undefined）。
  * @param value 要检查的值
  * @returns {boolean} 检查结果
+ *
+ * @example
+ * isEmpty([]); // => true
+ * isEmpty(null); // => true
+ * isEmpty(undefined); // => true
+ * isEmpty({}); // => true
+ * isEmpty(''); // => true
+ * isEmpty('test'); // => false
+ * isEmpty({ a: 5 }); // => false
+ * isEmpty([1]); // => false
+ * isEmpty(false); // => false
+ * isEmpty(true); // => false
+ * isEmpty(0); // => false
  */
-export function isEmpty(value: any) {
-  if (value === true || value === false) return false
-  if (value === null || value === undefined) return true
-  if (isNumber(value)) return value === 0
-  if (isDate(value)) return isNaN(value.getTime())
-  if (isFunction(value)) return false
-  if (isSymbol(value)) return false
-  const length = (value as any).length
-  if (isNumber(length)) return length === 0
-  const size = (value as any).size
-  if (isNumber(size)) return size === 0
-  const keys = Object.keys(value).length
-  return keys === 0
+export function isEmpty(value: unknown) {
+  if (isNil(value)) return true
+  if (isString(value)) return value.length === 0
+  if (isArray(value)) return value.length === 0
+  if (isObject(value)) return Object.keys(value).length === 0
+  return false
 }
 
 /**
@@ -173,8 +195,8 @@ export function isEmpty(value: any) {
 export function isEqual(val1: any, val2: any): boolean {
   if (val1 === val2) return true
 
-  const type = toRawType(val1)
-  const type2 = toRawType(val2)
+  const type = rawType(val1)
+  const type2 = rawType(val2)
 
   if (type !== type2) return false
 

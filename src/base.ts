@@ -1,22 +1,40 @@
-export const toString = (v: any) => Object.prototype.toString.call(v)
+export const toString = (v: unknown) => Object.prototype.toString.call(v)
 
 /**
  * 获取一个值的原始类型
- * extract "RawType" from strings like "[object RawType]"
  * @param v 要判断的值
  * @returns {string} 原始类型
+ * @example
+ * rawType(null) // => 'Null'
+ * rawType(undefined) // => 'Undefined'
+ * rawType(0) // => 'Number'
+ * rawType('') // => 'String'
+ * rawType(false) // => 'Boolean'
+ * rawType({}) // => 'Object'
+ * rawType([]) // => 'Array'
+ * rawType(() => {}) // => 'Function'
+ * rawType(/a/) // => 'RegExp'
  */
-export function toRawType(
-  v: any
-): 'Object' | 'Array' | 'ArrayBuffer' | 'Date' | 'RegExp' | 'Map' | 'Set' | string {
-  if (v === null) return 'null'
-  const type = toString(v).slice(8, -1).toLowerCase()
-  return typeof v === 'object' || typeof v === 'function' ? type : typeof v
-}
-
-/**
- * 一个空函数
- */
-export const NOOP = () => {
-  //
+export function rawType(
+  val: unknown
+):
+  | 'Null'
+  | 'Undefined'
+  | 'Number'
+  | 'String'
+  | 'Boolean'
+  | 'Object'
+  | 'Array'
+  | 'Function'
+  | 'RegExp'
+  | 'ArrayBuffer'
+  | 'Date'
+  | 'Map'
+  | 'Set'
+  | string {
+  return val === null
+    ? 'Null'
+    : val === undefined
+    ? 'Undefined'
+    : Object.prototype.toString.call(val).slice(8, -1)
 }

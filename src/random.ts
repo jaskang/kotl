@@ -12,16 +12,17 @@ export function random(min: number, max: number) {
 
 /**
  * 从数组中随机抽取一个元素
+ * @deprecated arr 不是数组或为空时返回 null
  * @param array 数组
  * @returns 随机抽取的元素
  */
-export function draw<T>(array: readonly T[]): T | null {
-  const max = array.length
+export function draw<T>(arr: T[]): T | null {
+  const max = Array.isArray(arr) ? arr.length : 0
   if (max === 0) {
     return null
   }
   const index = random(0, max - 1)
-  return array[index]
+  return arr[index]
 }
 
 /**
@@ -39,10 +40,10 @@ export function shuffle<T>(array: readonly T[]): T[] {
 /**
  * 生成唯一标识符
  * @param length 长度
- * @param specials 特殊字符
+ * @param specials 可包含的特殊字符 (可选)
  * @returns 唯一标识符
  */
-export function uid(length: number, specials: string = '') {
+export function uid(length: number, specials = '') {
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789' + specials
   return iterate(
     length,

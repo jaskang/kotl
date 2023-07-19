@@ -1,6 +1,28 @@
-import { toRawType } from './base'
+import { rawType } from './base'
 import { isArray, isFunction, isPrimitive } from './is'
 import { toInt } from './number'
+
+/**
+ * 抖动 (shake) 一个对象，删除值为 undefined 的属性
+ * @param obj
+ * @param filter
+ * @returns
+ */
+export const shake = <RemovedKeys extends string, T>(
+  obj: T,
+  filter: (key: keyof T, value: any) => boolean = (k, v) => v === undefined
+): Omit<T, RemovedKeys> => {
+  if (!obj) return {} as T
+  const keys = Object.keys(obj) as (keyof T)[]
+  return keys.reduce((acc, key) => {
+    if (filter(key, obj[key])) {
+      return acc
+    } else {
+      acc[key] = obj[key]
+      return acc
+    }
+  }, {} as T)
+}
 
 /**
  * Dynamically get a nested value from an array or
@@ -48,6 +70,17 @@ export const set = <T extends Record<string, any> = any>(obj: T, path: string, v
   return obj
 }
 
+function _cloneRegExp(pattern: RegExp) {
+  return new RegExp(
+    pattern.source,
+    (pattern.global ? 'g' : '') +
+      (pattern.ignoreCase ? 'i' : '') +
+      (pattern.multiline ? 'm' : '') +
+      (pattern.sticky ? 'y' : '') +
+      (pattern.unicode ? 'u' : '')
+  )
+}
+
 /**
  * 拷贝一个对象
  * @param val
@@ -56,22 +89,14 @@ export const set = <T extends Record<string, any> = any>(obj: T, path: string, v
 export function clone(val: any) {
   if (isPrimitive(val)) return val
 
-  const type = toRawType(val)
+  const type = rawType(val)
 
   if (isFunction(val)) {
-    const tmp = new val.constructor()
-    for (const k in val) {
-      if (val.hasOwnProperty(k) && tmp[k] !== val[k]) {
-        tmp[k] = clone(val[k])
-      }
-    }
-    return tmp
+    return val.bind({})
   } else if (type === 'Date') {
-    return new Date(+val)
+    return new Date(val.valueOf())
   } else if (type === 'RegExp') {
-    const tmp = new RegExp(val.source, val.flags)
-    tmp.lastIndex = val.lastIndex
-    return tmp
+    return _cloneRegExp(val)
   } else if (type === 'Set') {
     const tmp = new Set()
     val.forEach((i: any) => {
