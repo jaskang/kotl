@@ -1,5 +1,11 @@
 # kotl
 
+## 1.4.1
+
+### Patch Changes
+
+- [`5c7cad8`](https://github.com/JasKang/kotl/commit/5c7cad83b217ad6cc0b32f3b04d8ef51c0b6f8ce) Thanks [@JasKang](https://github.com/JasKang)! - fix: isBrowser is func
+
 ## 1.4.0
 
 ### Minor Changes
