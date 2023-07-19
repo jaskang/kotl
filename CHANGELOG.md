@@ -1,5 +1,11 @@
 # kotl
 
+## 1.4.0
+
+### Minor Changes
+
+- [`f3faea7`](https://github.com/JasKang/kotl/commit/f3faea7d8b26e0382fe2f6c54fe384af0248c699) Thanks [@JasKang](https://github.com/JasKang)! - isNil sleep
+
 ## 1.3.0
 
 ### Minor Changes
