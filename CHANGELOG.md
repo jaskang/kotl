@@ -1,5 +1,11 @@
 # kotl
 
+## 1.5.0
+
+### Minor Changes
+
+- [`3e11a9d`](https://github.com/JasKang/kotl/commit/3e11a9df521aeef87f47f5e6c14b3a8bc2925e5c) Thanks [@JasKang](https://github.com/JasKang)! - feat: Flat Data
+
 ## 1.4.1
 
 ### Patch Changes
