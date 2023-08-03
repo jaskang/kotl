@@ -1,5 +1,11 @@
 # kotl
 
+## 1.6.0
+
+### Minor Changes
+
+- [`45c846b`](https://github.com/JasKang/kotl/commit/45c846be7acfa95f8e992bd28b96615860470850) Thanks [@JasKang](https://github.com/JasKang)! - 新增 clsx
+
 ## 1.5.0
 
 ### Minor Changes
