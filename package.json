@@ -53,5 +53,8 @@
         "@algolia/client-search"
       ]
     }
+  },
+  "dependencies": {
+    "clsx": "^2.0.0"
   }
 }
