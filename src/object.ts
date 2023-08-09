@@ -29,18 +29,17 @@ export const shake = <RemovedKeys extends string, T>(
  * object with a string.
  *
  * @example get(person, 'friends[0].name')
+ *
+ * @link https://github.com/developit/dlv/blob/master/index.js
  */
-export const get = <T = any>(value: any, path: string, defaultValue: T | null = null): T | null => {
-  const segments = path.split(/[\.\[\]]/g)
-  let current: any = value
-  for (const key of segments) {
-    if (current === null) return defaultValue
-    if (current === undefined) return defaultValue
-    if (key.trim() === '') continue
-    current = current[key]
+export function get<T = any>(obj: any, path: string, def: T | null = null) {
+  const keys = path.split(/[\.\[\]]/g).filter(Boolean)
+  const len = keys.length
+  for (let i = 0; i < len; i++) {
+    if (obj === null || obj === undefined) return def
+    obj = obj ? obj[keys[i]] : undefined
   }
-  if (current === undefined) return defaultValue
-  return current
+  return obj === undefined ? def : obj
 }
 
 /**
@@ -51,25 +50,30 @@ export const get = <T = any>(value: any, path: string, defaultValue: T | null = 
  * @example
  * set({}, 'name', 'ra') // => { name: 'ra' }
  * set({}, 'cards[0].value', 2) // => { cards: [{ value: 2 }] }
+ *
+ * @link https://github.com/lukeed/dset/blob/master/src/index.js
  */
-export const set = <T extends Record<string, any> = any>(obj: T, path: string, value: any): T => {
-  if (!obj) return {} as T
-  if (!path || !value) return obj
-  const segments = path.split(/[\.\[\]]/g).filter(x => !!x.trim())
-  const _set = (node: any) => {
-    if (segments.length > 1) {
-      const key = segments.shift() as string
-      const nextIsNum = toInt(segments[0], null) === null ? false : true
-      node[key] = node[key] === undefined ? (nextIsNum ? [] : {}) : node[key]
-      _set(node[key])
+export function set<T = any>(obj: T, path: string, val: any) {
+  const keys = path.split(/[\.\[\]]/g).filter(Boolean)
+  const len = keys.length
+  let i = 0
+  let t: any = obj
+  let x
+  for (; i < len; i++) {
+    const k = keys[i]
+    if (k === '__proto__' || k === 'constructor' || k === 'prototype') break
+    if (i === len - 1) {
+      t = t[k] = val
     } else {
-      node[segments[0]] = value
+      t = t[k] =
+        typeof (x = t[k]) === typeof keys
+          ? x
+          : (keys as unknown as number[])[i] * 0 !== 0 || !!~('' + keys[i]).indexOf('.')
+          ? {}
+          : []
     }
   }
-  _set(obj)
-  return obj
 }
-
 function _cloneRegExp(pattern: RegExp) {
   return new RegExp(
     pattern.source,
