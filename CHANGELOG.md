@@ -1,5 +1,11 @@
 # kotl
 
+## 1.6.1
+
+### Patch Changes
+
+- [`4d0687d`](https://github.com/JasKang/kotl/commit/4d0687dad386b4b027581aee5374355db0342d70) Thanks [@JasKang](https://github.com/JasKang)! - fix: set get
+
 ## 1.6.0
 
 ### Minor Changes
