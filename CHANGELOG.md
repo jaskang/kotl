@@ -1,5 +1,11 @@
 # kotl
 
+## 1.7.0
+
+### Minor Changes
+
+- [`40df646`](https://github.com/JasKang/kotl/commit/40df646a28ae3e1112b6d8f1dc14f17dc149ffdb) Thanks [@JasKang](https://github.com/JasKang)! - feat Expand
+
 ## 1.6.1
 
 ### Patch Changes
