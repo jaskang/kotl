@@ -1,0 +1,4 @@
+{
+  "extends": ["@jaskang/eslint-config"],
+  "root": true
+}
