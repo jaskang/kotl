@@ -1,5 +1,11 @@
 # kotl
 
+## 1.7.1
+
+### Patch Changes
+
+- [`4549dbd`](https://github.com/JasKang/kotl/commit/4549dbd9e82454b595754ec47018f59cbc1fe749) Thanks [@JasKang](https://github.com/JasKang)! - fix: export clsx
+
 ## 1.7.0
 
 ### Minor Changes
