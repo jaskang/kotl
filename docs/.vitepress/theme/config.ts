@@ -1,9 +1,9 @@
-import type { SocialLink } from './types/socialLink'
 import {
   type LocaleLinkItem,
   type MenuItemChildWithChildren,
   type MenuItemWithLink,
 } from './types/menu'
+import type { SocialLink } from './types/socialLink'
 
 export interface Config {
   /**

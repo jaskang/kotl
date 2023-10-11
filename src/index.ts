@@ -1,13 +1,13 @@
-export * from "./array";
-export * from "./async";
-export * from "./base";
-export * from "./browser";
-export * from "./func";
-export * from "./is";
-export * from "./node";
-export * from "./number";
-export * from "./object";
-export * from "./random";
-export * from "./string";
-export * from "./types";
-export { clsx } from "clsx";
+export * from './array'
+export * from './async'
+export * from './base'
+export * from './browser'
+export * from './func'
+export * from './is'
+export * from './node'
+export * from './number'
+export * from './object'
+export * from './random'
+export * from './string'
+export * from './types'
+export { clsx } from 'clsx'

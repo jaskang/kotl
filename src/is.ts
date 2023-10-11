@@ -1,5 +1,5 @@
-import { rawType, toString } from "./base";
-import type { Func } from "./types";
+import { rawType, toString } from './base'
+import type { Func } from './types'
 
 /**
  * 判断 val 是否是空值 (null 或 undefined)
@@ -13,7 +13,7 @@ import type { Func } from "./types";
  * isNil(false) // => false
  */
 export function isNil<T>(data: T): data is Extract<T, null | undefined> {
-  return data == null;
+  return data == null
 }
 
 /**
@@ -22,7 +22,7 @@ export function isNil<T>(data: T): data is Extract<T, null | undefined> {
  * @returns {boolean} 判断结果
  */
 export function isUndefined(val: any): val is undefined {
-  return typeof val === "undefined";
+  return typeof val === 'undefined'
 }
 
 /**
@@ -31,7 +31,7 @@ export function isUndefined(val: any): val is undefined {
  * @returns {boolean} 判断结果
  */
 export function isNull(val: any): val is null {
-  return toString(val) === "[object Null]";
+  return toString(val) === '[object Null]'
 }
 
 /**
@@ -40,7 +40,7 @@ export function isNull(val: any): val is null {
  * @returns {boolean} 判断结果
  */
 export function isSymbol(val: any): val is symbol {
-  return typeof val === "symbol";
+  return typeof val === 'symbol'
 }
 
 /**
@@ -49,7 +49,7 @@ export function isSymbol(val: any): val is symbol {
  * @returns {boolean} 判断结果
  */
 export function isString(val: any): val is string {
-  return typeof val === "string" || val instanceof String;
+  return typeof val === 'string' || val instanceof String
 }
 
 /**
@@ -58,7 +58,7 @@ export function isString(val: any): val is string {
  * @returns {boolean} 判断结果
  */
 export function isBoolean(val: any): val is boolean {
-  return typeof val === "boolean";
+  return typeof val === 'boolean'
 }
 
 /**
@@ -67,7 +67,7 @@ export function isBoolean(val: any): val is boolean {
  * @returns {boolean} 判断结果
  */
 export function isBigInt(val: any): val is bigint {
-  return typeof val === "bigint";
+  return typeof val === 'bigint'
 }
 
 /**
@@ -76,7 +76,7 @@ export function isBigInt(val: any): val is bigint {
  * @returns {boolean} 判断结果
  */
 export function isNumber(val: any): val is number {
-  return typeof val === "number" && !isNaN(val);
+  return typeof val === 'number' && !isNaN(val)
 }
 
 /**
@@ -85,7 +85,7 @@ export function isNumber(val: any): val is number {
  * @returns {boolean} 判断结果
  */
 export function isInt(val: any): val is number {
-  return isNumber(val) && val % 1 === 0;
+  return isNumber(val) && val % 1 === 0
 }
 
 /**
@@ -94,7 +94,7 @@ export function isInt(val: any): val is number {
  * @returns {boolean} 判断结果
  */
 export function isFloat(val: any): val is number {
-  return isNumber(val) && val % 1 !== 0;
+  return isNumber(val) && val % 1 !== 0
 }
 
 /**
@@ -103,7 +103,7 @@ export function isFloat(val: any): val is number {
  * @returns {boolean} 判断结果
  */
 export function isArray(val: any): val is unknown[] {
-  return Array.isArray(val);
+  return Array.isArray(val)
 }
 
 /**
@@ -112,7 +112,7 @@ export function isArray(val: any): val is unknown[] {
  * @returns {boolean} 判断结果
  */
 export function isObject(val: any): val is Record<any, any> {
-  return val !== null && typeof val === "object";
+  return val !== null && typeof val === 'object'
 }
 
 /**
@@ -121,7 +121,7 @@ export function isObject(val: any): val is Record<any, any> {
  * @returns {boolean} 判断结果
  */
 export function isFunction<T extends Func = Func>(val: any): val is T {
-  return typeof val === "function";
+  return typeof val === 'function'
 }
 
 /**
@@ -130,7 +130,7 @@ export function isFunction<T extends Func = Func>(val: any): val is T {
  * @returns {boolean} 判断结果
  */
 export function isPromise<T = any>(val: unknown): val is Promise<T> {
-  return isObject(val) && isFunction(val.then) && isFunction(val.catch);
+  return isObject(val) && isFunction(val.then) && isFunction(val.catch)
 }
 
 /**
@@ -138,16 +138,14 @@ export function isPromise<T = any>(val: unknown): val is Promise<T> {
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export const isRegExp = (val: any): val is RegExp =>
-  toString(val) === "[object RegExp]";
+export const isRegExp = (val: any): val is RegExp => toString(val) === '[object RegExp]'
 
 /**
  * 判断 val 是否是 Date 类型
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export const isDate = (val: any): val is Date =>
-  toString(val) === "[object Date]";
+export const isDate = (val: any): val is Date => toString(val) === '[object Date]'
 
 /**
  * 判断一个值是否为原始类型（undefined、null、number、string、boolean、symbol、bitint）。
@@ -158,8 +156,8 @@ export function isPrimitive(value: any): boolean {
   return (
     value === undefined ||
     value === null ||
-    (typeof value !== "object" && typeof value !== "function")
-  );
+    (typeof value !== 'object' && typeof value !== 'function')
+  )
 }
 
 /**
@@ -181,11 +179,11 @@ export function isPrimitive(value: any): boolean {
  * isEmpty(0); // => false
  */
 export function isEmpty(value: unknown) {
-  if (isNil(value)) return true;
-  if (isString(value)) return value.length === 0;
-  if (isArray(value)) return value.length === 0;
-  if (isObject(value)) return Object.keys(value).length === 0;
-  return false;
+  if (isNil(value)) return true
+  if (isString(value)) return value.length === 0
+  if (isArray(value)) return value.length === 0
+  if (isObject(value)) return Object.keys(value).length === 0
+  return false
 }
 
 /**
@@ -195,27 +193,27 @@ export function isEmpty(value: unknown) {
  * @returns {boolean} 判断结果
  */
 export function isEqual(val1: any, val2: any): boolean {
-  if (val1 === val2) return true;
+  if (val1 === val2) return true
 
-  const type = rawType(val1);
-  const type2 = rawType(val2);
+  const type = rawType(val1)
+  const type2 = rawType(val2)
 
-  if (type !== type2) return false;
+  if (type !== type2) return false
 
-  if (typeof val1 !== "object") {
-    return val1 === val2;
-  } else if (type === "Date") {
-    return val1.getTime() === val2.getTime();
-  } else if (type === "RegExp") {
-    return val1.toString() === val2.toString();
-  } else if (type === "Array") {
-    if (val1.length !== val2.length) return false;
-    return val1.every((item: any, i: number) => isEqual(item, val2[i]));
+  if (typeof val1 !== 'object') {
+    return val1 === val2
+  } else if (type === 'Date') {
+    return val1.getTime() === val2.getTime()
+  } else if (type === 'RegExp') {
+    return val1.toString() === val2.toString()
+  } else if (type === 'Array') {
+    if (val1.length !== val2.length) return false
+    return val1.every((item: any, i: number) => isEqual(item, val2[i]))
   } else {
-    const keyArr = Object.keys(val1);
-    if (keyArr.length !== Object.keys(val2).length) return false;
+    const keyArr = Object.keys(val1)
+    if (keyArr.length !== Object.keys(val2).length) return false
     return keyArr.every((key: string) => {
-      return isEqual(val1[key], val2[key]);
-    });
+      return isEqual(val1[key], val2[key])
+    })
   }
 }

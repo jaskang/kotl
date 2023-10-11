@@ -2,6 +2,6 @@
   "extends": "@jaskang/config/tsconfig.json",
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"],
-    "types": ["node"],
+    "types": ["node"]
   }
 }

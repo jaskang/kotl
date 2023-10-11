@@ -1,4 +1,5 @@
 import { defineConfigWithTheme } from 'vitepress'
+
 import type { Config as ThemeConfig } from './theme/config'
 
 // https://vitepress.dev/reference/site-config
