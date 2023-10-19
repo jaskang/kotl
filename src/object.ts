@@ -32,14 +32,14 @@ export const shake = <RemovedKeys extends string, T>(
  *
  * @link https://github.com/developit/dlv/blob/master/index.js
  */
-export function get<T = any>(obj: any, path: string, def: T | null = null) {
+export function get<T = any>(obj: any, path: string, defaultValue: T | null = null) {
   const keys = path.split(/[\.\[\]]/g).filter(Boolean)
   const len = keys.length
   for (let i = 0; i < len; i++) {
-    if (obj === null || obj === undefined) return def
+    if (obj === null || obj === undefined) return defaultValue
     obj = obj ? obj[keys[i]] : undefined
   }
-  return obj === undefined ? def : obj
+  return obj === undefined ? defaultValue : obj
 }
 
 /**
@@ -74,6 +74,7 @@ export function set<T = any>(obj: T, path: string, val: any) {
     }
   }
 }
+
 function _cloneRegExp(pattern: RegExp) {
   return new RegExp(
     pattern.source,
