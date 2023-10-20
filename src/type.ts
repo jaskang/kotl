@@ -1,5 +1,50 @@
-import { rawType, toString } from './base'
+
 import type { Func } from './types'
+
+export function toString (v: unknown):string {
+  return Object.prototype.toString.call(v)
+}
+
+/**
+ * 获取一个值的原始类型
+ * @param v 要判断的值
+ * @returns {string} 原始类型
+ * @example
+ * rawType(null) // => 'Null'
+ * rawType(undefined) // => 'Undefined'
+ * rawType(0) // => 'Number'
+ * rawType('') // => 'String'
+ * rawType(false) // => 'Boolean'
+ * rawType({}) // => 'Object'
+ * rawType([]) // => 'Array'
+ * rawType(() => {}) // => 'Function'
+ * rawType(/a/) // => 'RegExp'
+ */
+export function rawType(
+  val: unknown
+):
+  | 'Null'
+  | 'Undefined'
+  | 'Number'
+  | 'String'
+  | 'Boolean'
+  | 'Object'
+  | 'Array'
+  | 'Function'
+  | 'RegExp'
+  | 'ArrayBuffer'
+  | 'Date'
+  | 'Map'
+  | 'Set'
+  | string {
+  return val === null
+    ? 'Null'
+    : val === undefined
+    ? 'Undefined'
+    : Object.prototype.toString.call(val).slice(8, -1)
+}
+
+
 
 /**
  * 判断 val 是否是空值 (null 或 undefined)
@@ -21,7 +66,7 @@ export function isNil<T>(data: T): data is Extract<T, null | undefined> {
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export function isUndefined(val: any): val is undefined {
+export function isUndefined(val: unknown): val is undefined {
   return typeof val === 'undefined'
 }
 
@@ -30,7 +75,7 @@ export function isUndefined(val: any): val is undefined {
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export function isNull(val: any): val is null {
+export function isNull(val: unknown): val is null {
   return toString(val) === '[object Null]'
 }
 
@@ -39,7 +84,7 @@ export function isNull(val: any): val is null {
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export function isSymbol(val: any): val is symbol {
+export function isSymbol(val: unknown): val is symbol {
   return typeof val === 'symbol'
 }
 
@@ -48,7 +93,7 @@ export function isSymbol(val: any): val is symbol {
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export function isString(val: any): val is string {
+export function isString(val: unknown): val is string {
   return typeof val === 'string' || val instanceof String
 }
 
