@@ -1,5 +1,11 @@
 # kotl
 
+## 1.8.0
+
+### Minor Changes
+
+- [`4cdda83`](https://github.com/JasKang/kotl/commit/4cdda83db51296c264c09108d227e2b2534d0e02) Thanks [@JasKang](https://github.com/JasKang)! - feat: toNumber
+
 ## 1.7.1
 
 ### Patch Changes
