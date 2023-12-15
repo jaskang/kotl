@@ -1,6 +1,4 @@
-import { rawType } from './base'
-import { isArray, isFunction, isPrimitive } from './is'
-import { toInt } from './number'
+import { isArray, isFunction, isPrimitive, rawType } from './type'
 
 /**
  * 抖动 (shake) 一个对象，删除值为 undefined 的属性

@@ -1,22 +1,23 @@
 import { describe, expect, it } from 'vitest'
+
 import {
-  isSymbol,
-  isString,
-  isBoolean,
-  isNumber,
-  isBigInt,
-  isUndefined,
-  isNull,
-  isInt,
-  isFloat,
   isArray,
-  isObject,
-  isFunction,
-  isRegExp,
+  isBigInt,
+  isBoolean,
   isDate,
-  isPrimitive,
   isEmpty,
   isEqual,
+  isFloat,
+  isFunction,
+  isInt,
+  isNull,
+  isNumber,
+  isObject,
+  isPrimitive,
+  isRegExp,
+  isString,
+  isSymbol,
+  isUndefined,
 } from '../src'
 
 describe('数据类型判断函数测试', () => {

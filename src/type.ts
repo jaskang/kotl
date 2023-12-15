@@ -1,7 +1,6 @@
-
 import type { Func } from './types'
 
-export function toString (v: unknown):string {
+export function toString(v: unknown): string {
   return Object.prototype.toString.call(v)
 }
 
@@ -44,8 +43,6 @@ export function rawType(
     : Object.prototype.toString.call(val).slice(8, -1)
 }
 
-
-
 /**
  * 判断 val 是否是空值 (null 或 undefined)
  * @param val 要判断的值
@@ -58,7 +55,7 @@ export function rawType(
  * isNil(false) // => false
  */
 export function isNil<T>(data: T): data is Extract<T, null | undefined> {
-  return data == null
+  return data == null || data === undefined
 }
 
 /**
@@ -102,7 +99,7 @@ export function isString(val: unknown): val is string {
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export function isBoolean(val: any): val is boolean {
+export function isBoolean(val: unknown): val is boolean {
   return typeof val === 'boolean'
 }
 
@@ -111,7 +108,7 @@ export function isBoolean(val: any): val is boolean {
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export function isBigInt(val: any): val is bigint {
+export function isBigInt(val: unknown): val is bigint {
   return typeof val === 'bigint'
 }
 
@@ -120,7 +117,7 @@ export function isBigInt(val: any): val is bigint {
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export function isNumber(val: any): val is number {
+export function isNumber(val: unknown): val is number {
   return typeof val === 'number' && !isNaN(val)
 }
 
@@ -129,7 +126,7 @@ export function isNumber(val: any): val is number {
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export function isInt(val: any): val is number {
+export function isInt(val: unknown): val is number {
   return isNumber(val) && val % 1 === 0
 }
 
@@ -138,7 +135,7 @@ export function isInt(val: any): val is number {
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export function isFloat(val: any): val is number {
+export function isFloat(val: unknown): val is number {
   return isNumber(val) && val % 1 !== 0
 }
 
@@ -147,7 +144,7 @@ export function isFloat(val: any): val is number {
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export function isArray(val: any): val is unknown[] {
+export function isArray(val: unknown): val is unknown[] {
   return Array.isArray(val)
 }
 
@@ -156,7 +153,7 @@ export function isArray(val: any): val is unknown[] {
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export function isObject(val: any): val is Record<any, any> {
+export function isObject<T = any>(val: unknown): val is T {
   return val !== null && typeof val === 'object'
 }
 
@@ -165,7 +162,7 @@ export function isObject(val: any): val is Record<any, any> {
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export function isFunction<T extends Func = Func>(val: any): val is T {
+export function isFunction<T extends Func = Func>(val: unknown): val is T {
   return typeof val === 'function'
 }
 
@@ -183,21 +180,21 @@ export function isPromise<T = any>(val: unknown): val is Promise<T> {
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export const isRegExp = (val: any): val is RegExp => toString(val) === '[object RegExp]'
+export const isRegExp = (val: unknown): val is RegExp => toString(val) === '[object RegExp]'
 
 /**
  * 判断 val 是否是 Date 类型
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export const isDate = (val: any): val is Date => toString(val) === '[object Date]'
+export const isDate = (val: unknown): val is Date => toString(val) === '[object Date]'
 
 /**
  * 判断一个值是否为原始类型（undefined、null、number、string、boolean、symbol、bitint）。
  * @param value 要检查的值
  * @returns {boolean} 检查结果
  */
-export function isPrimitive(value: any): boolean {
+export function isPrimitive(value: unknown): boolean {
   return (
     value === undefined ||
     value === null ||
@@ -225,6 +222,7 @@ export function isPrimitive(value: any): boolean {
  */
 export function isEmpty(value: unknown) {
   if (isNil(value)) return true
+  if (isNumber(value)) return value === 0
   if (isString(value)) return value.length === 0
   if (isArray(value)) return value.length === 0
   if (isObject(value)) return Object.keys(value).length === 0
@@ -253,7 +251,7 @@ export function isEqual(val1: any, val2: any): boolean {
     return val1.toString() === val2.toString()
   } else if (type === 'Array') {
     if (val1.length !== val2.length) return false
-    return val1.every((item: any, i: number) => isEqual(item, val2[i]))
+    return val1.every((item: unknown, i: number) => isEqual(item, val2[i]))
   } else {
     const keyArr = Object.keys(val1)
     if (keyArr.length !== Object.keys(val2).length) return false

@@ -1,11 +1,15 @@
-export const toInt = <T extends number | null = number>(
-  value: any,
-  defaultValue?: T
-): number | T => {
-  const def = defaultValue === undefined ? 0 : defaultValue
+export const toInt = (value: unknown, defaultValue?: number): number | undefined => {
   if (value === null || value === undefined) {
-    return def
+    return defaultValue
   }
-  const result = parseInt(value)
-  return isNaN(result) ? def : result
+  const result = parseInt(`${value}`)
+  return isNaN(result) ? defaultValue : result
+}
+
+export const toNumber = (value: unknown, defaultValue?: number): number | undefined => {
+  if (value === null || value === undefined) {
+    return defaultValue
+  }
+  const result = parseFloat(`${value}`)
+  return isNaN(result) ? defaultValue : result
 }
