@@ -1,5 +1,11 @@
 # kotl
 
+## 1.8.1
+
+### Patch Changes
+
+- [`77ac274`](https://github.com/JasKang/kotl/commit/77ac274ce84ce1cf6a2ad6bd2b13b6214b7bebeb) Thanks [@JasKang](https://github.com/JasKang)! - fix object set for null
+
 ## 1.8.0
 
 ### Minor Changes
