@@ -203,7 +203,7 @@ export function isPrimitive(value: unknown): boolean {
 }
 
 /**
- * 判断一个值是否为空（空字符串、空数组、空对象、空 Set/Map、null、undefined）。
+ * 判断一个值是否为空（空字符串、空数组、空对象、null、undefined）。
  * @param value 要检查的值
  * @returns {boolean} 检查结果
  *
@@ -222,7 +222,6 @@ export function isPrimitive(value: unknown): boolean {
  */
 export function isEmpty(value: unknown) {
   if (isNil(value)) return true
-  if (isNumber(value)) return value === 0
   if (isString(value)) return value.length === 0
   if (isArray(value)) return value.length === 0
   if (isObject(value)) return Object.keys(value).length === 0
@@ -230,7 +229,7 @@ export function isEmpty(value: unknown) {
 }
 
 /**
- * 判断两个值是否相等
+ * 判断两个值是否相等, 支持对象、数组、Set、Map、Date、RegExp 等。
  * @param x 要比较的第一个值
  * @param y 要比较的第二个值
  * @returns {boolean} 判断结果

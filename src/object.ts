@@ -1,4 +1,4 @@
-import { isArray, isFunction, isPrimitive, rawType } from './type'
+import { isArray, isFunction, isNil, isPrimitive, rawType } from './type'
 
 /**
  * 抖动 (shake) 一个对象，删除值为 undefined 的属性
@@ -64,7 +64,7 @@ export function set<T = any>(obj: T, path: string, val: any) {
       t = t[k] = val
     } else {
       t = t[k] =
-        typeof (x = t[k]) === typeof keys
+        typeof (x = t[k]) === 'object' && !isNil(x)
           ? x
           : (keys as unknown as number[])[i] * 0 !== 0 || !!~('' + keys[i]).indexOf('.')
           ? {}
