@@ -1,5 +1,11 @@
 # kotl
 
+## 1.8.2
+
+### Patch Changes
+
+- [`effe2bf`](https://github.com/JasKang/kotl/commit/effe2bf27b2b93f2e8faf7d7d5c81de4aed653af) Thanks [@JasKang](https://github.com/JasKang)! - fix git default value is null
+
 ## 1.8.1
 
 ### Patch Changes
