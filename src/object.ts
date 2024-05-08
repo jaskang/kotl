@@ -30,7 +30,7 @@ export const shake = <RemovedKeys extends string, T>(
  *
  * @link https://github.com/developit/dlv/blob/master/index.js
  */
-export function get<T = any>(obj: any, path: string, defaultValue: T | null = null) {
+export function get<T = any>(obj: any, path: string, defaultValue?: T) {
   const keys = path.split(/[\.\[\]]/g).filter(Boolean)
   const len = keys.length
   for (let i = 0; i < len; i++) {
