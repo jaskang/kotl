@@ -1,4 +1,17 @@
 name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        type: choice
+        description: 版本
+        options:
+          - patch
+          - minor
+          - major
+        default: patch
+
 env:
   CI: true
 jobs:
@@ -20,7 +33,7 @@ jobs:
         run: pnpm install
 
       - name: Release
-        run: pnpm release
+        run: pnpm release ${{ github.event.inputs.bump }}
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
