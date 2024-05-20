@@ -26,18 +26,19 @@
   "scripts": {
     "build": "tsup",
     "test": "vitest",
-    "change": "pnpm changeset",
-    "release": "pnpm build && changeset publish",
+    "release": "release-it",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
+  "dependencies": {
+    "clsx": "^2.0.0"
+  },
   "devDependencies": {
-    "@changesets/changelog-github": "^0.4.8",
-    "@changesets/cli": "^2.26.2",
     "@jaskang/config": "^2.0.0",
     "@jaskang/eslint-config": "^2.0.0",
     "@mdx-js/rollup": "^2.3.0",
+    "@release-it/conventional-changelog": "^8.0.1",
     "@types/node": "^20.8.4",
     "@types/react": "^18.2.30",
     "@types/react-dom": "^18.2.14",
@@ -49,6 +50,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.17.0",
+    "release-it": "^17.2.1",
     "tailwindcss": "^3.3.3",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2",
@@ -62,7 +64,21 @@
       ]
     }
   },
-  "dependencies": {
-    "clsx": "^2.0.0"
+  "release-it": {
+    "hooks": {
+      "after:bump": "pnpm run build"
+    },
+    "git": {
+      "commitMessage": "chore: release v${version}"
+    },
+    "github": {
+      "release": true
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": "angular",
+        "infile": "CHANGELOG.md"
+      }
+    }
   }
 }
