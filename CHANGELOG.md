@@ -1,3 +1,19 @@
+
+
+# [2.1.0](https://github.com/JasKang/kotl/compare/v1.8.1...v2.1.0) (2024-05-20)
+
+
+### Bug Fixes
+
+* get ([f47c0e9](https://github.com/JasKang/kotl/commit/f47c0e9e94a2c1d83a9a60810a4231b9a7daf23b))
+* object ([82e3c9a](https://github.com/JasKang/kotl/commit/82e3c9ad3b7ef7fe5a0b8fbfff14600ef7c56c32))
+* typed ([ecccb41](https://github.com/JasKang/kotl/commit/ecccb41d4be62f3b30bb7e51e15022fa7fa0b9aa))
+
+
+### Features
+
+* PrettifyNested ([dbd21b8](https://github.com/JasKang/kotl/commit/dbd21b8d836a45e8893e8210bbbf5f497657e02a))
+
 # kotl
 
 ## 2.0.2
