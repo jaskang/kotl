@@ -1,5 +1,11 @@
 # kotl
 
+## 2.0.0
+
+### Major Changes
+
+- [`7ee2dd0`](https://github.com/JasKang/kotl/commit/7ee2dd063b8ef5e02bcb61f3f5673d6d03433cb3) Thanks [@JasKang](https://github.com/JasKang)! - add PrettifyNested
+
 ## 1.8.2
 
 ### Patch Changes
