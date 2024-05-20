@@ -1,5 +1,11 @@
 # kotl
 
+## 2.0.1
+
+### Patch Changes
+
+- [`cba675d`](https://github.com/JasKang/kotl/commit/cba675ddd28ea1c2138a79a9305a7e4ea0dc1506) Thanks [@JasKang](https://github.com/JasKang)! - fix fix: object
+
 ## 2.0.0
 
 ### Major Changes
