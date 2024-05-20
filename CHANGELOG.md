@@ -1,5 +1,11 @@
 # kotl
 
+## 2.0.2
+
+### Patch Changes
+
+- [`60e3fd4`](https://github.com/JasKang/kotl/commit/60e3fd4b2ef7488c0e749c058aac1be1d5d2f16b) Thanks [@JasKang](https://github.com/JasKang)! - fix typed
+
 ## 2.0.1
 
 ### Patch Changes
