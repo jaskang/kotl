@@ -1,0 +1,5 @@
+---
+'kotl': major
+---
+
+add PrettifyNested
