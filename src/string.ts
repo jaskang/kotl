@@ -1,4 +1,4 @@
-import { get } from "./object"
+import { get } from './object'
 
 /**
  * template is used to replace data by name in template strings.
@@ -10,18 +10,17 @@ import { get } from "./object"
 export const template = (
   str: string,
   data: Record<string, any>,
-  options:{
+  options: {
     regex?: RegExp
     defaultValue?: string
   }
 ) => {
-  const { regex = /\{\{(.+?)\}\}/g, defaultValue ='' } = options||{};
+  const { regex = /\{\{(.+?)\}\}/g, defaultValue = '' } = options || {}
 
   return Array.from(str.matchAll(regex)).reduce((acc, match) => {
-    return acc.replace(match[0], get(data,match[1],defaultValue))
+    return acc.replace(match[0], get(data, match[1], defaultValue))
   }, str)
 }
-
 
 /**
  * 去除字符串两端的空格

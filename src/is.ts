@@ -1,47 +1,5 @@
+import { rawType, toString } from './base'
 import type { Func } from './types'
-
-export function toString(v: unknown): string {
-  return Object.prototype.toString.call(v)
-}
-
-/**
- * 获取一个值的原始类型
- * @param v 要判断的值
- * @returns {string} 原始类型
- * @example
- * rawType(null) // => 'Null'
- * rawType(undefined) // => 'Undefined'
- * rawType(0) // => 'Number'
- * rawType('') // => 'String'
- * rawType(false) // => 'Boolean'
- * rawType({}) // => 'Object'
- * rawType([]) // => 'Array'
- * rawType(() => {}) // => 'Function'
- * rawType(/a/) // => 'RegExp'
- */
-export function rawType(
-  val: unknown
-):
-  | 'Null'
-  | 'Undefined'
-  | 'Number'
-  | 'String'
-  | 'Boolean'
-  | 'Object'
-  | 'Array'
-  | 'Function'
-  | 'RegExp'
-  | 'ArrayBuffer'
-  | 'Date'
-  | 'Map'
-  | 'Set'
-  | string {
-  return val === null
-    ? 'Null'
-    : val === undefined
-    ? 'Undefined'
-    : Object.prototype.toString.call(val).slice(8, -1)
-}
 
 /**
  * 判断 val 是否是空值 (null 或 undefined)
@@ -54,8 +12,8 @@ export function rawType(
  * isNil(0) // => false
  * isNil(false) // => false
  */
-export function isNil<T>(data: T): data is Extract<T, null | undefined> {
-  return data == null || data === undefined
+export function isNullable<T>(val: T): val is Extract<T, null | undefined> {
+  return val === null || val === undefined
 }
 
 /**
@@ -73,7 +31,7 @@ export function isUndefined(val: unknown): val is undefined {
  * @returns {boolean} 判断结果
  */
 export function isNull(val: unknown): val is null {
-  return toString(val) === '[object Null]'
+  return rawType(val) === 'Null'
 }
 
 /**
@@ -91,7 +49,7 @@ export function isSymbol(val: unknown): val is symbol {
  * @returns {boolean} 判断结果
  */
 export function isString(val: unknown): val is string {
-  return typeof val === 'string' || val instanceof String
+  return typeof val === 'string'
 }
 
 /**
@@ -153,7 +111,7 @@ export function isArray(val: unknown): val is unknown[] {
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export function isObject<T = any>(val: unknown): val is T {
+export function isObject<T = unknown>(val: unknown): val is T {
   return val !== null && typeof val === 'object'
 }
 
@@ -171,8 +129,11 @@ export function isFunction<T extends Func = Func>(val: unknown): val is T {
  * @param val 要判断的值
  * @returns {boolean} 判断结果
  */
-export function isPromise<T = any>(val: unknown): val is Promise<T> {
-  return isObject(val) && isFunction(val.then) && isFunction(val.catch)
+export function isPromise<T = unknown>(val: any): val is Promise<T> {
+  if (!val) return false
+  if (!val.then) return false
+  if (!isFunction(val.then)) return false
+  return true
 }
 
 /**
@@ -220,11 +181,11 @@ export function isPrimitive(value: unknown): boolean {
  * isEmpty(true); // => false
  * isEmpty(0); // => false
  */
-export function isEmpty(value: unknown) {
-  if (isNil(value)) return true
-  if (isString(value)) return value.length === 0
-  if (isArray(value)) return value.length === 0
-  if (isObject(value)) return Object.keys(value).length === 0
+export function isEmpty(val: unknown) {
+  if (isNullable(val)) return true
+  if (isString(val)) return val.length === 0
+  if (isArray(val)) return val.length === 0
+  if (isObject(val)) return Object.keys(val as {}).length === 0
   return false
 }
 
