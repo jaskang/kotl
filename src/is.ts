@@ -1,5 +1,5 @@
 import { rawType, toString } from './base'
-import type { Func } from './types'
+import type { Func } from './typed'
 
 /**
  * 判断 val 是否是空值 (null 或 undefined)
