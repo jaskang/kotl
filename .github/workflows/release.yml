@@ -4,31 +4,36 @@ on:
   push:
     branches:
       - main
+
 env:
   CI: true
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
 jobs:
   release:
+    name: 🚀 Release
     timeout-minutes: 15
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: ⬇️ Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Setup Pnpm
+      - name: 🥡 Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9
           run_install: false
 
-      - name: Setup Node
+      - name: 🟢 Setup node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'pnpm'
 
-      - name: Setup Config
+      - name: 🔆 Setup Config
         run: |
           git config --global user.email jaskang@qq.com
           git config --global user.name github-actions
@@ -36,16 +41,16 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Install Dependencies
+      - name: 🧩 Install Dependencies
         run: pnpm install
 
-      - name: Create Release Pull Request
+      - name: 📣 Create Release Pull Request
         uses: changesets/action@v1
         with:
           version: pnpm changeset version
           publish: pnpm changeset publish
-          commit: 'chore: update versions'
-          title: 'chore: update versions'
+          commit: 'chore(release): version packages 🦋 [skip ci]'
+          title: 'chore(release): version packages 🦋'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
