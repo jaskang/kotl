@@ -1,5 +1,12 @@
 
 
+## [2.1.1](https://github.com/JasKang/kotl/compare/v2.1.0...v2.1.1) (2024-05-21)
+
+
+### Features
+
+* release ([9dc454a](https://github.com/JasKang/kotl/commit/9dc454a207a6af3883463ad3051b49879cbc9563))
+
 # [2.1.0](https://github.com/JasKang/kotl/compare/v1.8.1...v2.1.0) (2024-05-20)
 
 
