@@ -27,7 +27,7 @@
     "build": "tsup",
     "test": "vitest",
     "change": "pnpm changeset",
-    "prepublishOnly": "pnpm build",
+    "release": "pnpm build && changeset publish",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
