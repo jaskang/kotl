@@ -1,5 +1,11 @@
 ## 2.1.2
 
+## 2.1.4
+
+### Patch Changes
+
+- [`e7ff3bb`](https://github.com/JasKang/kotl/commit/e7ff3bb940b34dc3b97f7e68c558cfc15c0421d8) Thanks [@JasKang](https://github.com/JasKang)! - 类型继承嗯题
+
 ## 2.1.3
 
 ### Patch Changes
