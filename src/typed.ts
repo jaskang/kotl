@@ -1,9 +1,9 @@
 export type AugmentedRequired<T extends object, K extends keyof T = keyof T> = Omit<T, K> &
   Required<Pick<T, K>>
 
-export type Func = (...args: unknown[]) => unknown
+export type Func = (...args: any[]) => any
 
-export type Data = Record<string, unknown>
+export type Data = Record<string, any>
 
 export type Prettify<T> = {
   [K in keyof T]: T[K]
