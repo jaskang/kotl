@@ -1,5 +1,11 @@
 ## 2.1.2
 
+## 2.2.1
+
+### Patch Changes
+
+- [`97038a2`](https://github.com/jaskang/kotl/commit/97038a2784752d0965dcf8c8fe9179039e938d7d) Thanks [@jaskang](https://github.com/jaskang)! - export clsx
+
 ## 2.2.0
 
 ### Minor Changes
