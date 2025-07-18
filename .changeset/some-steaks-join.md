@@ -1,5 +1,0 @@
----
-'kotl': patch
----
-
-export clsx
