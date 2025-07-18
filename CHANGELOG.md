@@ -1,5 +1,11 @@
 ## 2.1.2
 
+## 2.2.0
+
+### Minor Changes
+
+- [`7a66390`](https://github.com/jaskang/kotl/commit/7a663907778ce2ca983e8fe4d31d9d7b1c450129) Thanks [@jaskang](https://github.com/jaskang)! - feat: clsx
+
 ## 2.1.4
 
 ### Patch Changes
