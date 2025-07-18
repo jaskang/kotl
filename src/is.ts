@@ -156,11 +156,7 @@ export const isDate = (val: unknown): val is Date => toString(val) === '[object 
  * @returns {boolean} 检查结果
  */
 export function isPrimitive(value: unknown): boolean {
-  return (
-    value === undefined ||
-    value === null ||
-    (typeof value !== 'object' && typeof value !== 'function')
-  )
+  return value === undefined || value === null || (typeof value !== 'object' && typeof value !== 'function')
 }
 
 /**

@@ -22,7 +22,7 @@ export function draw<T>(arr: T[]): T | null {
     return null
   }
   const index = random(0, max - 1)
-  return arr[index]
+  return arr[index]!
 }
 
 /**

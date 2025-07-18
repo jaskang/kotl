@@ -34,9 +34,5 @@ export function rawType(
   | 'Map'
   | 'Set'
   | string {
-  return val === null
-    ? 'Null'
-    : val === undefined
-    ? 'Undefined'
-    : Object.prototype.toString.call(val).slice(8, -1)
+  return val === null ? 'Null' : val === undefined ? 'Undefined' : Object.prototype.toString.call(val).slice(8, -1)
 }

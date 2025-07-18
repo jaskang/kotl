@@ -1,5 +1,4 @@
-export type AugmentedRequired<T extends object, K extends keyof T = keyof T> = Omit<T, K> &
-  Required<Pick<T, K>>
+export type AugmentedRequired<T extends object, K extends keyof T = keyof T> = Omit<T, K> & Required<Pick<T, K>>
 
 export type Func = (...args: any[]) => any
 

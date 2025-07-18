@@ -18,7 +18,7 @@ export const template = (
   const { regex = /\{\{(.+?)\}\}/g, defaultValue = '' } = options || {}
 
   return Array.from(str.matchAll(regex)).reduce((acc, match) => {
-    return acc.replace(match[0], get(data, match[1], defaultValue))
+    return acc.replace(match[0], get(data, match[1]!, defaultValue))
   }, str)
 }
 

@@ -1,5 +1,5 @@
 {
-  "extends": "@jaskang/config/tsconfig.json",
+  "extends": "@jaskang/config/tsconfig.base.json",
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"],
     "types": ["node"]

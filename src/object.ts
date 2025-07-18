@@ -36,7 +36,7 @@ export function get<T = any>(obj: any, path: string, defaultValue?: T) {
   const len = keys.length
   for (let i = 0; i < len; i++) {
     if (obj === null || obj === undefined) return defaultValue
-    obj = obj ? obj[keys[i]] : undefined
+    obj = obj ? obj[keys[i]!] : undefined
   }
   return obj === undefined ? defaultValue : obj
 }
@@ -68,8 +68,8 @@ export function set<T = any>(obj: T, path: string, val: any) {
         typeof (x = t[k]) === 'object' && !isNullable(x)
           ? x
           : (keys as unknown as number[])[i] * 0 !== 0 || !!~('' + keys[i]).indexOf('.')
-          ? {}
-          : []
+            ? {}
+            : []
     }
   }
 }
