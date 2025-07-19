@@ -4,6 +4,10 @@ export type Func = (...args: any[]) => any
 
 export type Data = Record<string, any>
 
+export type NonNullableObject<T> = {
+  [K in keyof T]: T[K] & {}
+} & {}
+
 export type Prettify<T> = {
   [K in keyof T]: T[K]
 } & {}
