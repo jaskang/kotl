@@ -1,5 +1,11 @@
 ## 2.1.2
 
+## 2.2.2
+
+### Patch Changes
+
+- [`f845dfc`](https://github.com/jaskang/kotl/commit/f845dfc47a09dcb47b6c5ac9e76ba3f6424804e1) Thanks [@jaskang](https://github.com/jaskang)! - feat NonNullableObject
+
 ## 2.2.1
 
 ### Patch Changes
