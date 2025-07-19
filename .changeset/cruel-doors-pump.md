@@ -1,0 +1,5 @@
+---
+'kotl': patch
+---
+
+feat NonNullableObject
